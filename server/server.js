@@ -8,10 +8,13 @@ const app = express();
 
 const imageHandler = require('./controllers/images.js');
 
+app.use(express.static(path.join(__dirname, '/../client/public')));
+
+
+app.use('/images', imageHandler);
+
+
+
 const server = app.listen(port, function () {
   console.log('Listening on port ', port);
 });
-
-app.use(express.static(path.join(__dirname, '/../client/public')));
-app.use('/images', imageHandler);
-
